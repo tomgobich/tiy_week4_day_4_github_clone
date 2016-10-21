@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  width: 100%; }
+
+body {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  background-color: #fff;
+  color: #333; }
+
+a {
+  color: #4078C0; }
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.6em; }
+
+img {
+  max-width: 100%; }
+
+.container {
+  max-width: 1004px; }
+
+.main-body {
+  padding-top: 30px; }
+
+header {
+  background-color: #F5F5F5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DDD; }
+  header .header-left .logo {
+    height: 28px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px; }
+  header .header-left .search-github {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3px; }
+    header .header-left .search-github input {
+      width: 300px;
+      font-size: 0.9em;
+      background-color: #fff;
+      border: 1px solid #DDD;
+      padding: 2px 5px;
+      -webkit-border-radiu: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px; }
+  header .header-left .nav-left {
+    display: inline-block;
+    vertical-align: top; }
+    header .header-left .nav-left ul {
+      font-weight: normal;
+      list-style: none;
+      padding: 4px 0 0 4px;
+      margin-bottom: 0; }
+      header .header-left .nav-left ul li {
+        display: inline-block;
+        padding: 0 5px; }
+        header .header-left .nav-left ul li a {
+          color: #333; }
+          header .header-left .nav-left ul li a:hover {
+            color: #4078C0;
+            text-decoration: none; }
+  header .header-right .nav-right {
+    float: right; }
+    header .header-right .nav-right ul {
+      list-style: none; }
+      header .header-right .nav-right ul li {
+        display: inline-block; }
+
+.profile-info .profile-section {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 5px;
+  margin-bottom: 15px; }
+  .profile-info .profile-section:last-child {
+    border-bottom: none; }
+  .profile-info .profile-section:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.profile-info .avatar {
+  -webkit-border-radiu: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
+
+.profile-info .name {
+  font-weight: 900;
+  margin: 10px 0 -5px 0; }
+
+.profile-info .username {
+  font-size: 1.6em;
+  font-weight: 300;
+  color: #767676;
+  margin: 0 0 5px 0; }
+
+.profile-info .about {
+  color: #767676; }
+
+.profile-info .profile-links {
+  list-style: none;
+  padding-left: 0; }
+  .profile-info .profile-links li {
+    width: 100%;
+    padding: 3px 0; }
+    .profile-info .profile-links li .icon {
+      width: 22px;
+      padding-right: 10px;
+      margin-top: -3px; }
+
+.profile-info .activity-count {
+  width: 33.332%;
+  text-align: center;
+  float: left; }
+  .profile-info .activity-count .count {
+    font-size: 1.6em;
+    font-weight: 900;
+    margin: 0;
+    display: block; }
+  .profile-info .activity-count .title {
+    font-size: 0.9em;
+    color: #767676; }
+
+.profile-info .organization-title {
+  font-size: 1.4em;
+  margin: 0 0 10px 0; }
+
+.profile-info .organization {
+  width: 20%;
+  margin: 0;
+  float: left; }

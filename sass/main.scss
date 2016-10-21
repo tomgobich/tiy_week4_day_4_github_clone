@@ -1,0 +1,257 @@
+@import 'bourbon/bourbon';
+
+// --------------------------------------------------
+// Variables
+// --------------------------------------------------
+$color-background: 	#fff;
+$color-alt-background: #F5F5F5;
+$color-border: #DDD;
+$color-link: #4078C0;
+$color-text: #333;
+$color-text-light: #767676;
+
+$border-radius-small: 3px;
+$border-radius-large: 6px;
+
+
+
+// --------------------------------------------------
+// Mixins
+// --------------------------------------------------
+@mixin clearAfter() {
+	content:"";
+    display:table;
+    clear:both;
+}
+
+@mixin displayInlineBlock() {
+	display: inline-block;
+	vertical-align: top;
+}
+
+@mixin boxShadow() {
+	box-shadow: 1px 1px 3px rgba($color-background, .2);
+}
+
+@mixin borderRadius($border-radius) {
+	-webkit-border-radiu: $border-radius;
+	  -moz-border-radius: $border-radius;
+		   border-radius: $border-radius;
+}
+
+
+
+// --------------------------------------------------
+// Global Styles
+// --------------------------------------------------
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-size: 14px;
+	font-family: 'Lato', sans-serif;
+    background-color: $color-background;
+	color: $color-text;
+}
+
+a {
+	color: $color-link;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.6em;
+}
+
+img {
+	max-width: 100%;
+}
+
+.container {
+	max-width: 1004px;
+}
+
+.main-body {
+	padding-top: 30px;
+}
+
+
+
+// --------------------------------------------------
+// Navigation Styles
+// --------------------------------------------------
+header {
+	background-color: $color-alt-background;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid $color-border;
+
+	.header-left {
+
+		.logo {
+			height: 28px;
+			@include displayInlineBlock();
+			margin-right: 10px;
+		}
+
+		.search-github {
+			@include displayInlineBlock();
+			margin-top: 3px;
+
+			input {
+				width: 300px;
+				font-size: 0.9em;
+				background-color: $color-background;
+				border: 1px solid $color-border;
+				padding: 2px 5px;
+				@include borderRadius($border-radius-small);
+			}
+		}
+
+		.nav-left {
+			@include displayInlineBlock();
+
+			ul {
+				font-weight: normal;
+				list-style: none;
+				padding: 4px 0 0 4px;
+				margin-bottom: 0;
+
+				li {
+					display: inline-block;
+					padding: 0 5px;
+
+					a {
+						color: $color-text;
+
+						&:hover {
+							color: $color-link;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.header-right {
+
+		.nav-right {
+			float: right;
+
+			ul {
+				list-style: none;
+
+				li {
+					display: inline-block;
+				}
+			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Profile Info Styles
+// --------------------------------------------------
+.profile-info {
+
+	.profile-section {
+		border-bottom: 1px solid $color-border;
+		padding-bottom: 5px;
+		margin-bottom: 15px;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:after {
+			@include clearAfter();
+		}
+	}
+
+	.avatar {
+		@include borderRadius($border-radius-large);
+	}
+
+	.name {
+		font-weight: 900;
+		margin: 10px 0 -5px 0;
+	}
+
+	.username {
+		font-size: 1.6em;
+		font-weight: 300;
+		color: $color-text-light;
+		margin: 0 0 5px 0;
+	}
+
+	.about {
+		color: $color-text-light;
+	}
+
+	.profile-links {
+		list-style: none;
+		padding-left: 0;
+
+		li {
+			width: 100%;
+			padding: 3px 0;
+
+			.icon {
+				width: 22px;
+				padding-right: 10px;
+				margin-top: -3px;
+			}
+		}
+	}
+
+	.activity-count {
+		width: 33.332%;
+		text-align: center;
+
+		float: left;
+
+		.count {
+			font-size: 1.6em;
+			font-weight: 900;
+			margin: 0;
+			display: block;
+		}
+
+		.title {
+			font-size: 0.9em;
+			color: $color-text-light;
+		}
+	}
+
+	.organization-title {
+		font-size: 1.4em;
+		margin: 0 0 10px 0;
+	}
+
+	.organization {
+		width: 20%;
+		margin: 0;
+		float: left;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Responsive Styles
+// --------------------------------------------------
+@import '_responsive.scss';
