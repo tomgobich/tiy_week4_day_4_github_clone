@@ -13,6 +13,8 @@ body {
 
 a {
   color: #4078C0; }
+  a:hover {
+    color: #4078C0; }
 
 p,
 h1,
@@ -73,9 +75,22 @@ header {
   header .header-right .nav-right {
     float: right; }
     header .header-right .nav-right ul {
-      list-style: none; }
+      list-style: none;
+      margin: 0; }
       header .header-right .nav-right ul li {
-        display: inline-block; }
+        display: inline-block;
+        padding: 4px 0 0 10px; }
+        header .header-right .nav-right ul li #navAvatar {
+          max-height: 16px;
+          -webkit-border-radiu: 3px;
+          border-radius: 3px; }
+        header .header-right .nav-right ul li #navUsername {
+          font-size: 1em;
+          padding-left: 5px;
+          margin: 0;
+          float: right; }
+        header .header-right .nav-right ul li .carrot {
+          width: 8px; }
 
 .profile-info .profile-section {
   border-bottom: 1px solid #DDD;
@@ -93,14 +108,14 @@ header {
   border-radius: 6px; }
 
 .profile-info .name {
-  font-weight: 900;
-  margin: 10px 0 -5px 0; }
+  font-weight: 600;
+  margin: 10px 0 -8px 0; }
 
 .profile-info .username {
   font-size: 1.6em;
   font-weight: 300;
   color: #767676;
-  margin: 0 0 5px 0; }
+  margin: 0 0 2px 0; }
 
 .profile-info .about {
   color: #767676; }
@@ -137,5 +152,161 @@ header {
   width: 20%;
   margin: 0;
   float: left; }
+
+.section-tabs {
+  list-style: none;
+  border-bottom: 1px solid #DDD;
+  padding: 0; }
+  .section-tabs li {
+    display: inline-block;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #fff;
+    padding: 8px 24px;
+    cursor: pointer; }
+    .section-tabs li h3 {
+      font-size: 1.3em;
+      vertical-align: top;
+      padding-left: 8px;
+      margin: 0;
+      display: inline-block;
+      vertical-align: top; }
+    .section-tabs li .icon {
+      height: 18px;
+      margin-top: 6px;
+      display: inline-block;
+      vertical-align: top; }
+    .section-tabs li.active {
+      border-top: 1px solid #DDD;
+      border-right: 1px solid #DDD;
+      border-bottom: 1px solid #fff;
+      border-left: 1px solid #DDD;
+      margin-bottom: -1px; }
+
+#repositoryListing .repository-search {
+  padding: 10px 0;
+  border-bottom: 1px solid #DDD; }
+  #repositoryListing .repository-search form {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top; }
+    #repositoryListing .repository-search form .search-input {
+      width: calc(100% - 77px);
+      padding: 8px;
+      border: 1px solid #DDD;
+      margin-right: 5px;
+      float: left;
+      -webkit-border-radiu: 3px;
+      border-radius: 3px; }
+    #repositoryListing .repository-search form .search-button {
+      color: black;
+      background-color: #F5F5F5;
+      padding: 8px 14px;
+      border: 1px solid #DDD;
+      float: left;
+      -webkit-border-radiu: 3px;
+      border-radius: 3px; }
+  #repositoryListing .repository-search .search-right {
+    float: right; }
+    #repositoryListing .repository-search .search-right .search-filter {
+      list-style: none;
+      padding-right: 10px;
+      display: inline-block;
+      vertical-align: top; }
+      #repositoryListing .repository-search .search-right .search-filter li {
+        padding: 8px 4px;
+        display: inline-block; }
+        #repositoryListing .repository-search .search-right .search-filter li a.active {
+          color: black;
+          font-weight: 800; }
+    #repositoryListing .repository-search .search-right .new-repository {
+      color: white;
+      font-weight: 800;
+      background-color: #75C759;
+      background-image: linear-gradient(to bottom, #95d47f, #5ab13c);
+      border: 1px solid #468b2f; }
+
+#repositoryListing .repository {
+  padding: 20px 0;
+  border-bottom: 1px solid #DDD; }
+  #repositoryListing .repository:last-child {
+    border-bottom: none; }
+  #repositoryListing .repository:after {
+    content: "";
+    display: table;
+    clear: both; }
+  #repositoryListing .repository .repository-left {
+    width: 70%;
+    padding-right: 20px;
+    float: left; }
+    #repositoryListing .repository .repository-left .repository-name {
+      font-weight: 600;
+      margin: 0 0 10px 0; }
+    #repositoryListing .repository .repository-left .repository-fork img {
+      padding: 2px 5px 0 0;
+      display: inline-block;
+      vertical-align: top; }
+    #repositoryListing .repository .repository-left .repository-fork p {
+      display: inline-block;
+      vertical-align: top; }
+    #repositoryListing .repository .repository-left .repository-about {
+      font-size: 1.2em; }
+  #repositoryListing .repository .repository-right {
+    width: 30%;
+    text-align: right;
+    float: right;
+    padding-top: 4px; }
+    #repositoryListing .repository .repository-right img {
+      height: 18px;
+      margin: 1px 2px 0 14px; }
+    #repositoryListing .repository .repository-right .repository-type,
+    #repositoryListing .repository .repository-right .repository-stars,
+    #repositoryListing .repository .repository-right .repository-branches {
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 0;
+      display: inline-block;
+      vertical-align: top; }
+
+#activityListing {
+  display: none; }
+  #activityListing .activity {
+    padding: 20px 0;
+    border-bottom: 1px solid #DDD; }
+    #activityListing .activity:last-child {
+      border-bottom: none; }
+    #activityListing .activity .activity-icon {
+      width: 50px;
+      height: 100%;
+      padding-right: 10px;
+      display: inline-block;
+      vertical-align: top; }
+      #activityListing .activity .activity-icon img {
+        width: 100%; }
+    #activityListing .activity .activity-body {
+      display: inline-block;
+      vertical-align: top; }
+      #activityListing .activity .activity-body .time-since {
+        color: #767676;
+        margin: 0; }
+      #activityListing .activity .activity-body .activity-title {
+        margin: 0 0 3px 0; }
+      #activityListing .activity .activity-body .activity-description p {
+        display: inline-block;
+        vertical-align: top; }
+      #activityListing .activity .activity-body .activity-description .user-repo {
+        width: 35px;
+        margin-top: 1px;
+        display: inline-block;
+        vertical-align: top;
+        -webkit-border-radiu: 3px;
+        border-radius: 3px; }
+      #activityListing .activity .activity-body .activity-description .last-user {
+        width: 20px;
+        margin-top: 1px;
+        display: inline-block;
+        vertical-align: top;
+        -webkit-border-radiu: 3px;
+        border-radius: 3px; }
 
 /*# sourceMappingURL=main.css.map */

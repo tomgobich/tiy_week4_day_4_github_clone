@@ -9,6 +9,7 @@ $color-border: #DDD;
 $color-link: #4078C0;
 $color-text: #333;
 $color-text-light: #767676;
+$color-success: #75C759;
 
 $border-radius-small: 3px;
 $border-radius-large: 6px;
@@ -62,6 +63,10 @@ body {
 
 a {
 	color: $color-link;
+
+	&:hover {
+		color: $color-link;
+	}
 }
 
 p,
@@ -152,9 +157,27 @@ header {
 
 			ul {
 				list-style: none;
+				margin: 0;
 
 				li {
 					display: inline-block;
+					padding: 4px 0 0 10px;
+
+					#navAvatar {
+						max-height: 16px;
+						@include borderRadius($border-radius-small);
+					}
+
+					#navUsername {
+					    font-size: 1em;
+					    padding-left: 5px;
+					    margin: 0;
+					    float: right;
+					}
+
+					.carrot {
+						width: 8px;
+					}
 				}
 			}
 		}
@@ -187,15 +210,15 @@ header {
 	}
 
 	.name {
-		font-weight: 900;
-		margin: 10px 0 -5px 0;
+		font-weight: 600;
+		margin: 10px 0 -8px 0;
 	}
 
 	.username {
 		font-size: 1.6em;
 		font-weight: 300;
 		color: $color-text-light;
-		margin: 0 0 5px 0;
+		margin: 0 0 2px 0;
 	}
 
 	.about {
@@ -246,6 +269,239 @@ header {
 		width: 20%;
 		margin: 0;
 		float: left;
+	}
+}
+
+
+
+// --------------------------------------------------
+// Section Tab Styles
+// --------------------------------------------------
+.section-tabs {
+	list-style: none;
+	border-bottom: 1px solid $color-border;
+	padding: 0;
+
+	li {
+		display: inline-block;
+		border-top: 1px solid $color-background;
+		border-right: 1px solid $color-background;
+		border-left: 1px solid $color-background;
+		padding: 8px 24px;
+		cursor: pointer;
+
+		h3 {
+			font-size: 1.3em;
+			vertical-align: top;
+			padding-left: 8px;
+			margin: 0;
+			@include displayInlineBlock();
+		}
+
+		.icon {
+			height: 18px;
+			margin-top: 6px;
+			@include displayInlineBlock();
+		}
+
+		&.active {
+			border-top: 1px solid $color-border;
+			border-right: 1px solid $color-border;
+			border-bottom: 1px solid $color-background;
+			border-left: 1px solid $color-border;
+			margin-bottom: -1px;						// Places border-bottom atop ul's border-bottom
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Repository Listing Styles
+// --------------------------------------------------
+#repositoryListing {
+
+	.repository-search {
+		padding: 10px 0;
+		border-bottom: 1px solid $color-border;
+
+		form {
+			width: 40%;
+			@include displayInlineBlock();
+
+			.search-input {
+				width: calc(100% - 77px);
+				padding: 8px;
+				border: 1px solid $color-border;
+				margin-right: 5px;
+				float: left;
+				@include borderRadius($border-radius-small);
+			}
+
+			.search-button {
+				color: black;
+				background-color: $color-alt-background;
+				padding: 8px 14px;
+				border: 1px solid $color-border;
+				float: left;
+				@include borderRadius($border-radius-small);
+			}
+		}
+
+		.search-right {
+			float: right;
+
+			.search-filter {
+				list-style: none;
+				padding-right: 10px;
+				@include displayInlineBlock();
+
+				li {
+					padding: 8px 4px;
+					display: inline-block;
+
+					a {
+
+						&.active {
+							color: black;
+							font-weight: 800;
+						}
+					}
+				}
+			}
+
+			.new-repository {
+				color: white;
+				font-weight: 800;
+				background-color: $color-success;
+				background-image: linear-gradient(to bottom, lighten($color-success, 10), darken($color-success, 10));
+				border: 1px solid darken($color-success, 20);
+			}
+		}
+	}
+
+	.repository {
+		padding: 20px 0;
+		border-bottom: 1px solid $color-border;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:after {
+			@include clearAfter();
+		}
+
+		.repository-left {
+			width: 70%;
+			padding-right: 20px;
+			float: left;
+
+			.repository-name {
+				font-weight: 600;
+				margin: 0 0 10px 0;
+			}
+
+			.repository-fork {
+
+				img {
+					padding: 2px 5px 0 0;
+					@include displayInlineBlock();
+				}
+
+				p {
+					@include displayInlineBlock();
+				}
+			}
+
+			.repository-about {
+				font-size: 1.2em;
+			}
+		}
+
+		.repository-right {
+			width: 30%;
+			text-align: right;
+			float: right;
+			padding-top: 4px;
+
+			img {
+				height: 18px;
+				margin: 1px 2px 0 14px;
+			}
+
+			.repository-type,
+			.repository-stars,
+			.repository-branches {
+				font-size: 1.2em;
+				font-weight: 600;
+				margin: 0;
+				@include displayInlineBlock();
+			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Activity Listing Styles
+// --------------------------------------------------
+#activityListing {
+	display: none;
+
+	.activity {
+		padding: 20px 0;
+		border-bottom: 1px solid $color-border;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		.activity-icon {
+			width: 50px;
+			height: 100%;
+			padding-right: 10px;
+			@include displayInlineBlock();
+
+			img {
+				width: 100%;
+			}
+		}
+
+		.activity-body {
+			@include displayInlineBlock();
+
+			.time-since {
+				color: $color-text-light;
+				margin: 0;
+			}
+
+			.activity-title {
+				margin: 0 0 3px 0;
+			}
+
+			.activity-description {
+
+				p {
+					@include displayInlineBlock();
+				}
+
+				.user-repo {
+					width: 35px;
+					margin-top: 1px;
+					@include displayInlineBlock();
+					@include borderRadius($border-radius-small);
+				}
+
+				.last-user {
+					width: 20px;
+					margin-top: 1px;
+					@include displayInlineBlock();
+					@include borderRadius($border-radius-small);
+				}
+			}
+		}
 	}
 }
 

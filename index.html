@@ -40,8 +40,21 @@
 					<nav class="nav-right">
 						<ul>
 							<li>
+								<img id="navAvatar" src="http://placehold.it/20x20">
+								<h4 id="navUsername"></h4>
+							</li>
+							<li>
 								<img src="images/octicons/svg/plus.svg">
-								<img src="images/octicons/svg/triangle-down.svg">
+								<img class="carrot" src="images/octicons/svg/triangle-down.svg">
+							</li>
+							<li>
+								<img src="images/octicons/svg/inbox.svg">
+							</li>
+							<li>
+								<img src="images/octicons/svg/gear.svg">
+							</li>
+							<li>
+								<img src="images/octicons/svg/sign-out.svg">
 							</li>
 						</ul>
 					</nav>
@@ -61,6 +74,58 @@
 				
 			</div>
 			<!-- /.profile-info -->
+			<!-- Main Body Outline -->
+			<div id="bodyData" class="col-md-9 body-outline">
+				<ul id="profileTabs" class="section-tabs">
+					<li id="repositories" class="profile-tabs active" data-content="repositoryListing"><img class="icon" src="images/octicons/svg/repo.svg"><h3>Repositories</h3></li>
+					<li id="publicActivity" class="profile-tabs" data-content="activityListing"><img class="icon" src="images/octicons/svg/rss.svg"><h3>Public Activity</h3></li>
+				</ul>
+				<div id="dataLists">
+					<div id="repositoryListing" data-id="repositoryListing">
+						<div class="repository-search">
+							<form>
+								<input class="search-input" type="text" placeholder="Find a repository...">
+								<button class="btn search-button" type="submit">Search</button>
+							</form>
+							<div class="search-right">
+								<ul class="search-filter">
+									<li><a class="active" href="#">All</a></li>
+									<li><a href="#">Public</a></li>
+									<li><a href="#">Private</a></li>
+									<li><a href="#">Sources</a></li>
+									<li><a href="#">Forks</a></li>
+									<li><a href="#">Mirrors</a></li>
+								</ul>
+								<button class="btn new-repository">
+									<img src="images/octicons/svg/repo.svg">
+									New
+								</button>
+							</div>
+						</div>
+						<!-- Repository Listing -->
+					</div>
+					<div id="activityListing" data-id="activityListing">
+						<div class="activity">
+							<div class="activity-icon">
+								<img src="images/octicons/svg/git-commit.svg">
+							</div>
+							<div class="activity-body">
+								<p class="time-since">19 hours ago</p>
+								<h4 class="activity-title">
+									<a href="#">calweb</a> pushed to <a href="#">master</a> at 
+									<a href="#">TIY-Charleston-Front-En...</a>
+								</h4>
+								<div class="activity-description">
+									<img class="user-repo" src="http://placehold.it/35x35">
+									<img class="last-user" src="http://placehold.it/20x20">
+									<p><a href="#">c64c92f</a> added image req
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.body-outline -->
 		</div>
 	</div>
 	<!-- /.container -->
@@ -72,6 +137,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- Main JavaScript File -->
+	<!-- <script src="dist/js/profile.js"></script> -->
 	<script src="dist/js/github.js"></script>
 	<script src="dist/js/main.js"></script>
 
