@@ -247,20 +247,30 @@ header {
     #repositoryListing .repository .repository-left .repository-name {
       font-weight: 600;
       margin: 0 0 10px 0; }
-    #repositoryListing .repository .repository-left .repository-fork img {
-      padding: 2px 5px 0 0;
-      display: inline-block;
-      vertical-align: top; }
-    #repositoryListing .repository .repository-left .repository-fork p {
-      display: inline-block;
-      vertical-align: top; }
+    #repositoryListing .repository .repository-left .repository-fork {
+      color: #767676; }
+      #repositoryListing .repository .repository-left .repository-fork img {
+        padding: 2px 5px 0 0;
+        display: inline-block;
+        vertical-align: top; }
+      #repositoryListing .repository .repository-left .repository-fork p {
+        display: inline-block;
+        vertical-align: top; }
     #repositoryListing .repository .repository-left .repository-about {
       font-size: 1.2em; }
+    #repositoryListing .repository .repository-left .repository-update {
+      color: #767676; }
   #repositoryListing .repository .repository-right {
     width: 30%;
     text-align: right;
+    color: #767676;
     float: right;
     padding-top: 4px; }
+    #repositoryListing .repository .repository-right a {
+      color: #767676; }
+      #repositoryListing .repository .repository-right a:hover {
+        color: #4078C0;
+        text-decoration: none; }
     #repositoryListing .repository .repository-right img {
       height: 18px;
       margin: 1px 2px 0 14px; }
@@ -287,7 +297,8 @@ header {
       display: inline-block;
       vertical-align: top; }
       #activityListing .activity .activity-icon img {
-        width: 100%; }
+        width: 100%;
+        max-height: 30px; }
     #activityListing .activity .activity-body {
       display: inline-block;
       vertical-align: top; }

@@ -4,6 +4,8 @@ $(document).ready(function() {
 	var Profile = (function() {
 
 		var user = {};
+		var Organization = function() {};
+		var organizations = [];
 
 		// Make API call to get user data from GitHub
 		var getUserProfile = function() {
@@ -38,9 +40,33 @@ $(document).ready(function() {
 				url: 'https://api.github.com/users/tomgobich/starred',
 				success: function(resp) {
 					user.starred = resp.length;
-					displayUserData();
+					getUserOrganizations();
 				}
 			})
+		}
+
+		var getUserOrganizations = function() {
+			$.ajax({
+				url: 'https://api.github.com/users/tomgobich/orgs',
+				success: function(resp) {
+					setupOrganizations(resp);
+				}
+			})
+		}
+
+		var setupOrganizations = function(data) {
+			data.forEach(function(organizationData) {
+				let organization 	= new Organization();
+
+				organization.id		= organizationData.id;
+				organization.name 	= organizationData.login;
+				organization.url 	= 'https://github.com/' + organization.name;
+				organization.avatar = organizationData.avatar_url;
+
+				organizations.push(organization);
+			});
+
+			displayUserData();
 		}
 
 		// Append user data to DOM
@@ -60,7 +86,7 @@ $(document).ready(function() {
 			$profileInfo.append(Build.userInfo());
 			$profileInfo.append(Build.userLinks());
 			$profileInfo.append(Build.userStats());
-			$profileInfo.append(Build.userOrganizations());
+			if(organizations.length > 0) { $profileInfo.append(Build.userOrganizations()); }
 
 			// Attach #profileInfo back on DOM
 			$profileRow.prepend($profileInfo);
@@ -89,7 +115,7 @@ $(document).ready(function() {
 						<ul class="profile-links">
 							<li><img class="icon location" src="images/octicons/svg/location.svg">${user.location}</li>
 							<li><img class="icon email" src="images/octicons/svg/mail.svg"><a href="#">${user.email}</a></li>
-							<li><img class="icon clock" src="images/octicons/svg/clock.svg">${user.creation}</li>
+							<li><img class="icon clock" src="images/octicons/svg/clock.svg">Joined on ${moment(user.creation).format('ll')}</li>
 						</ul>
 					 </div>`;
 
@@ -101,15 +127,15 @@ $(document).ready(function() {
 				let userStats = 
 					`<div id="userStats" class="profile-section">
 						<div class="activity-count">
-							<h3 class="count"><a href="#">${user.followers}</a></h3>
+							<h3 class="count"><a href="https://github.com/${user.username}/followers">${user.followers}</a></h3>
 							<p class="title">Followers</p>
 						 </div>
 						 <div class="activity-count">
-							<h3 class="count"><a href="#">${user.starred}</a></h3>
+							<h3 class="count"><a href="https://github.com/${user.username}?tab=stars">${user.starred}</a></h3>
 							<p class="title">Starred</p>
 						 </div>
 						 <div class="activity-count">
-							<h3 class="count"><a href="#">${user.following}</a></h3>
+							<h3 class="count"><a href="https://github.com/${user.username}/following">${user.following}</a></h3>
 							<p class="title">Following</p>
 						 </div>	
 					 </div>`;
@@ -121,9 +147,14 @@ $(document).ready(function() {
 			var buildUserOrganizations = function() {
 				let userOrganizations =
 					`<div id="userOrganizations" class="profile-section">
-						<h3 class="organization-title">Organizations</h3>
-					 	<img class="organization" src="http://placehold.it/30x30">
-					 </div>`;
+						<h3 class="organization-title">Organizations</h3>`;
+
+				organizations.forEach(function(organization) {
+					userOrganizations += 
+						`<a href="${organization.url}">
+							<img class="organization" src="${organization.avatar}" alt="${organization.name}">
+						 </a>`;
+				});
 
 				return userOrganizations;
 			}
@@ -145,6 +176,8 @@ $(document).ready(function() {
 		}
 
 	})();
+
+
 
 	// Build profile
 	Profile.buildProfile();
