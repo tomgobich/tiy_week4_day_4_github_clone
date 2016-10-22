@@ -47,13 +47,13 @@ header {
   header .header-left .search-github {
     display: inline-block;
     vertical-align: top;
-    margin-top: 3px; }
+    margin-top: 2px; }
     header .header-left .search-github input {
       width: 300px;
       font-size: 0.9em;
       background-color: #fff;
       border: 1px solid #DDD;
-      padding: 2px 5px;
+      padding: 5px;
       -webkit-border-radiu: 3px;
       border-radius: 3px; }
   header .header-left .nav-left {
@@ -62,7 +62,7 @@ header {
     header .header-left .nav-left ul {
       font-weight: normal;
       list-style: none;
-      padding: 4px 0 0 4px;
+      padding: 7px 0 0 4px;
       margin-bottom: 0; }
       header .header-left .nav-left ul li {
         display: inline-block;
@@ -79,7 +79,10 @@ header {
       margin: 0; }
       header .header-right .nav-right ul li {
         display: inline-block;
-        padding: 4px 0 0 10px; }
+        padding: 7px 0 0 10px; }
+        header .header-right .nav-right ul li:first-child {
+          position: relative;
+          top: -2px; }
         header .header-right .nav-right ul li #navAvatar {
           max-height: 16px;
           -webkit-border-radiu: 3px;
@@ -90,7 +93,8 @@ header {
           margin: 0;
           float: right; }
         header .header-right .nav-right ul li .carrot {
-          width: 8px; }
+          position: relative;
+          top: 1px; }
 
 .profile-info .profile-section {
   border-bottom: 1px solid #DDD;
@@ -157,15 +161,18 @@ header {
   list-style: none;
   border-bottom: 1px solid #DDD;
   padding: 0; }
+  .section-tabs .octicons {
+    position: relative;
+    top: 7px; }
   .section-tabs li {
     display: inline-block;
     border-top: 1px solid #fff;
     border-right: 1px solid #fff;
     border-left: 1px solid #fff;
-    padding: 8px 24px;
+    padding: 6px 15px;
     cursor: pointer; }
     .section-tabs li h3 {
-      font-size: 1.3em;
+      font-size: 1.2em;
       vertical-align: top;
       padding-left: 8px;
       margin: 0;
@@ -192,7 +199,7 @@ header {
     vertical-align: top; }
     #repositoryListing .repository-search form .search-input {
       width: calc(100% - 77px);
-      padding: 8px;
+      padding: 5px;
       border: 1px solid #DDD;
       margin-right: 5px;
       float: left;
@@ -201,7 +208,7 @@ header {
     #repositoryListing .repository-search form .search-button {
       color: black;
       background-color: #F5F5F5;
-      padding: 8px 14px;
+      padding: 5px 10px;
       border: 1px solid #DDD;
       float: left;
       -webkit-border-radiu: 3px;
@@ -214,7 +221,7 @@ header {
       display: inline-block;
       vertical-align: top; }
       #repositoryListing .repository-search .search-right .search-filter li {
-        padding: 8px 4px;
+        padding: 5px 4px;
         display: inline-block; }
         #repositoryListing .repository-search .search-right .search-filter li a.active {
           color: black;
@@ -224,7 +231,8 @@ header {
       font-weight: 800;
       background-color: #75C759;
       background-image: linear-gradient(to bottom, #95d47f, #5ab13c);
-      border: 1px solid #468b2f; }
+      border: 1px solid #468b2f;
+      margin-top: -2px; }
 
 #repositoryListing .repository {
   padding: 20px 0;
@@ -241,18 +249,20 @@ header {
     float: left; }
     #repositoryListing .repository .repository-left .repository-name {
       font-weight: 600;
-      margin: 0 0 10px 0; }
+      font-size: 1.4em;
+      margin: 0 0 5px 0; }
     #repositoryListing .repository .repository-left .repository-fork {
       color: #767676; }
       #repositoryListing .repository .repository-left .repository-fork img {
-        padding: 2px 5px 0 0;
+        padding: 2px 0 0 0;
         display: inline-block;
         vertical-align: top; }
       #repositoryListing .repository .repository-left .repository-fork p {
         display: inline-block;
         vertical-align: top; }
     #repositoryListing .repository .repository-left .repository-about {
-      font-size: 1.2em; }
+      font-size: 1.2em;
+      padding: 0; }
     #repositoryListing .repository .repository-left .repository-update {
       color: #767676; }
   #repositoryListing .repository .repository-right {
@@ -266,15 +276,13 @@ header {
       #repositoryListing .repository .repository-right a:hover {
         color: #4078C0;
         text-decoration: none; }
-    #repositoryListing .repository .repository-right img {
-      height: 18px;
-      margin: 1px 2px 0 14px; }
     #repositoryListing .repository .repository-right .repository-type,
     #repositoryListing .repository .repository-right .repository-stars,
     #repositoryListing .repository .repository-right .repository-branches {
-      font-size: 1.2em;
+      font-size: 1em;
       font-weight: 600;
-      margin: 0;
+      padding: 0 6px 0 0;
+      margin: -2px 0 0 0;
       display: inline-block;
       vertical-align: top; }
 
@@ -288,21 +296,28 @@ header {
     #activityListing .activity .activity-icon {
       width: 50px;
       height: 100%;
+      color: #767676;
       padding-right: 10px;
       display: inline-block;
       vertical-align: top; }
-      #activityListing .activity .activity-icon img {
-        width: 100%;
-        max-height: 30px; }
     #activityListing .activity .activity-body {
+      width: 80%;
       display: inline-block;
       vertical-align: top; }
       #activityListing .activity .activity-body .time-since {
         color: #767676;
         margin: 0; }
       #activityListing .activity .activity-body .activity-title {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         margin: 0 0 3px 0; }
       #activityListing .activity .activity-body .activity-description p {
+        width: calc(100% - 65px);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         display: inline-block;
         vertical-align: top; }
       #activityListing .activity .activity-body .activity-description .user-repo {

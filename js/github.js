@@ -53,12 +53,6 @@ $(document).ready(function() {
 			});
 		}
 
-		// HTML block removed from Repo listing
-		// <div class="repository-fork">
-		// 	<img src="images/octicons/svg/repo-forked.svg">
-		// 	<p>forked from <a href="#">theironyard/js-assginments</a></p>
-		// </div>
-
 		// Display the repository data (called within loop)
 		var displayRepositoryData = function(repository) {
 			let repositoryElement =
@@ -71,11 +65,11 @@ $(document).ready(function() {
 					<div class="repository-right">
 						<h4 class="repository-type">${repository.language}</h4>
 						<a href="${repository.url}/stargazers">
-							<img src="images/octicons/svg/star.svg">
+							<span class="octicon octicon-star"></span>
 							<h4 class="repository-stars">${repository.starCount}</h4>
 						</a>
 						<a href="${repository.url}/branches">
-							<img src="images/octicons/svg/git-branch.svg">
+							<span class="octicon octicon-git-branch"></span>
 							<h4 class="repository-branches">${repository.branchCount}</h4>
 						</a>
 					</div>
@@ -172,7 +166,7 @@ $(document).ready(function() {
 			let pushElement =
 				`<div class="activity">
 					<div class="activity-icon">
-						<img src="images/octicons/svg/git-commit.svg">
+						<span class="mega-octicon octicon-git-commit"></span>
 					</div>
 					<div class="activity-body">
 						<p class="time-since">${moment(activity.date).fromNow()}</p>
@@ -197,7 +191,7 @@ $(document).ready(function() {
 			let createElement =
 				`<div class="activity">
 					<div class="activity-icon">
-						<img src="images/octicons/svg/repo.svg">
+						<span class="mega-octicon octicon-repo"></span>
 					</div>
 					<div class="activity-body">
 						<p class="time-since">${moment(activity.date).fromNow()}</p>
@@ -220,7 +214,7 @@ $(document).ready(function() {
 			let createElement =
 				`<div class="activity">
 					<div class="activity-icon">
-						<img src="images/octicons/svg/git-branch.svg">
+						<span class="mega-octicon octicon-git-branch"></span>
 					</div>
 					<div class="activity-body">
 						<p class="time-since">${moment(activity.date).fromNow()}</p>

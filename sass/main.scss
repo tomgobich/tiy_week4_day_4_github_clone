@@ -112,14 +112,14 @@ header {
 
 		.search-github {
 			@include displayInlineBlock();
-			margin-top: 3px;
+			margin-top: 2px;
 
 			input {
 				width: 300px;
 				font-size: 0.9em;
 				background-color: $color-background;
 				border: 1px solid $color-border;
-				padding: 2px 5px;
+				padding: 5px;
 				@include borderRadius($border-radius-small);
 			}
 		}
@@ -130,7 +130,7 @@ header {
 			ul {
 				font-weight: normal;
 				list-style: none;
-				padding: 4px 0 0 4px;
+				padding: 7px 0 0 4px;
 				margin-bottom: 0;
 
 				li {
@@ -161,7 +161,12 @@ header {
 
 				li {
 					display: inline-block;
-					padding: 4px 0 0 10px;
+					padding: 7px 0 0 10px;
+
+					&:first-child {
+						position: relative;
+						top: -2px;
+					}
 
 					#navAvatar {
 						max-height: 16px;
@@ -176,7 +181,8 @@ header {
 					}
 
 					.carrot {
-						width: 8px;
+						position: relative;
+						top: 1px;
 					}
 				}
 			}
@@ -282,16 +288,21 @@ header {
 	border-bottom: 1px solid $color-border;
 	padding: 0;
 
+	.octicons {
+		position: relative;
+		top: 7px;
+	}
+
 	li {
 		display: inline-block;
 		border-top: 1px solid $color-background;
 		border-right: 1px solid $color-background;
 		border-left: 1px solid $color-background;
-		padding: 8px 24px;
+		padding: 6px 15px;
 		cursor: pointer;
 
 		h3 {
-			font-size: 1.3em;
+			font-size: 1.2em;
 			vertical-align: top;
 			padding-left: 8px;
 			margin: 0;
@@ -331,7 +342,7 @@ header {
 
 			.search-input {
 				width: calc(100% - 77px);
-				padding: 8px;
+				padding: 5px;
 				border: 1px solid $color-border;
 				margin-right: 5px;
 				float: left;
@@ -341,7 +352,7 @@ header {
 			.search-button {
 				color: black;
 				background-color: $color-alt-background;
-				padding: 8px 14px;
+				padding: 5px 10px;
 				border: 1px solid $color-border;
 				float: left;
 				@include borderRadius($border-radius-small);
@@ -357,7 +368,7 @@ header {
 				@include displayInlineBlock();
 
 				li {
-					padding: 8px 4px;
+					padding: 5px 4px;
 					display: inline-block;
 
 					a {
@@ -376,6 +387,7 @@ header {
 				background-color: $color-success;
 				background-image: linear-gradient(to bottom, lighten($color-success, 10), darken($color-success, 10));
 				border: 1px solid darken($color-success, 20);
+				margin-top: -2px;
 			}
 		}
 	}
@@ -399,14 +411,15 @@ header {
 
 			.repository-name {
 				font-weight: 600;
-				margin: 0 0 10px 0;
+				font-size: 1.4em;
+				margin: 0 0 5px 0;
 			}
 
 			.repository-fork {
 				color: $color-text-light;
 
 				img {
-					padding: 2px 5px 0 0;
+					padding: 2px 0 0 0;
 					@include displayInlineBlock();
 				}
 
@@ -417,6 +430,7 @@ header {
 
 			.repository-about {
 				font-size: 1.2em;
+				padding: 0;
 			}
 
 			.repository-update {
@@ -440,17 +454,13 @@ header {
 				}
 			}
 
-			img {
-				height: 18px;
-				margin: 1px 2px 0 14px;
-			}
-
 			.repository-type,
 			.repository-stars,
 			.repository-branches {
-				font-size: 1.2em;
+				font-size: 1em;
 				font-weight: 600;
-				margin: 0;
+				padding: 0 6px 0 0;
+				margin: -2px 0 0 0;
 				@include displayInlineBlock();
 			}
 		}
@@ -476,16 +486,13 @@ header {
 		.activity-icon {
 			width: 50px;
 			height: 100%;
+			color: $color-text-light;
 			padding-right: 10px;
 			@include displayInlineBlock();
-
-			img {
-				width: 100%;
-				max-height: 30px;
-			}
 		}
 
 		.activity-body {
+			width: 80%;
 			@include displayInlineBlock();
 
 			.time-since {
@@ -494,12 +501,20 @@ header {
 			}
 
 			.activity-title {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				margin: 0 0 3px 0;
 			}
 
 			.activity-description {
 
 				p {
+					width: calc(100% - 65px);
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
 					@include displayInlineBlock();
 				}
 

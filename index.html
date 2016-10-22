@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>tomgobich (Tom Gobich)</title>
 	
+	<!-- Octicons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.css" />
+
 	<!-- Bootstrap Styles -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -24,7 +27,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 header-left">
-					<img class="logo" src="images/octicons/svg/mark-github.svg" alt="GitHub">
+					<!-- <img class="logo" src="images/octicons/svg/mark-github.svg" alt="GitHub"> -->
+					<span class="mega-octicon octicon-mark-github"></span>
 					<form class="search-github">
 						<input type="text" name="searchGitHub" placeholder="Search GitHub">
 					</form>
@@ -44,17 +48,18 @@
 								<h4 id="navUsername"></h4>
 							</li>
 							<li>
-								<img src="images/octicons/svg/plus.svg">
-								<img class="carrot" src="images/octicons/svg/triangle-down.svg">
+								<span class="octicon octicon-plus"></span>
+								<span class="octicon octicon-triangle-down carrot"></span>
 							</li>
 							<li>
-								<img src="images/octicons/svg/inbox.svg">
+								<span class="octicon octicon-inbox"></span>
+								<span class="octicon octicon-triangle-down carrot"></span>
 							</li>
 							<li>
-								<img src="images/octicons/svg/gear.svg">
+								<span class="octicon octicon-gear"></span>
 							</li>
 							<li>
-								<img src="images/octicons/svg/sign-out.svg">
+								<span class="octicon octicon-sign-out"></span>
 							</li>
 						</ul>
 					</nav>
@@ -77,8 +82,8 @@
 			<!-- Main Body Outline -->
 			<div id="bodyData" class="col-md-9 body-outline">
 				<ul id="profileTabs" class="section-tabs">
-					<li id="repositories" class="profile-tabs active" data-content="repositoryListing"><img class="icon" src="images/octicons/svg/repo.svg"><h3>Repositories</h3></li>
-					<li id="publicActivity" class="profile-tabs" data-content="activityListing"><img class="icon" src="images/octicons/svg/rss.svg"><h3>Public Activity</h3></li>
+					<li id="repositories" class="profile-tabs active" data-content="repositoryListing"><h3><span class="octicon octicon-repo"></span> Repositories</h3></li>
+					<li id="publicActivity" class="profile-tabs" data-content="activityListing"><h3><span class="octicon octicon-rss"></span> Public Activity</h3></li>
 				</ul>
 				<div id="dataLists">
 					<div id="repositoryListing" data-id="repositoryListing">
@@ -97,7 +102,7 @@
 									<li><a href="#">Mirrors</a></li>
 								</ul>
 								<button class="btn new-repository">
-									<img src="images/octicons/svg/repo.svg">
+									<span class="octicon octicon-repo"></span>
 									New
 								</button>
 							</div>
