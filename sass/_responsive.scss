@@ -1,0 +1,95 @@
+@media screen and (max-width: 993px) {
+	header {
+
+		.header-left {
+
+			.menu-icon {
+				display: inline-block;
+			}
+
+			.search-github,
+			.nav-left {
+				display: none;
+			}
+		}
+	}
+
+	.profile-info {
+		padding-bottom: 40px;
+
+		.avatar {
+			width: 30%;
+			padding: 0 20px 20px 0;
+			float: left;
+		}
+	}
+}
+
+@media screen and (max-width: 675px) {
+	#repositoryListing {
+
+		.repository-search {
+
+			form {
+				width: 85%;
+			}
+
+			.search-right {
+
+				.filter {
+					display: inline-block;
+					padding: 7px 0;
+				}
+
+				.search-filter,
+				.new-repository {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.profile-info {
+		.avatar {
+			float: none;
+			padding: 0;
+		}
+	}
+}
+
+@media screen and (max-width: 465px) {
+	header {
+
+		.header-right {
+
+			.nav-right {
+
+				ul {
+					
+					li {
+
+						#navUsername {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#repositoryListing {
+
+		.repository {
+
+			.repository-left {
+				width: 100%;
+			}
+
+			.repository-right {
+				display: none;
+			}
+		}
+	}
+}

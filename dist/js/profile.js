@@ -101,7 +101,7 @@ $(document).ready(function () {
 
 			// #userInfo section
 			var buildUserInfo = function buildUserInfo() {
-				var userInfo = '<div id="userInfo" class="profile-section">\n\t\t\t\t\t\t<img id="avatar" class="avatar" src="' + user.avatar + '" alt="' + user.name + '">\n\t\t\t\t\t\t<h2 id="name" class="name">' + user.name + '</h2>\n\t\t\t\t\t\t<p id="username" class="username">' + user.username + '</p>\n\t\t\t\t\t\t<p id="about" class="about">' + user.about + '</p>\t\t\n\t\t\t\t\t </div>';
+				var userInfo = '<div id="userInfo" class="profile-section">\n\t\t\t\t\t\t<img id="avatar" class="avatar" src="' + user.avatar + '" alt="' + user.name + '">\n\t\t\t\t\t\t<div class="user-info">\n\t\t\t\t\t\t\t<h2 id="name" class="name">' + user.name + '</h2>\n\t\t\t\t\t\t\t<p id="username" class="username">' + user.username + '</p>\n\t\t\t\t\t\t\t<p id="about" class="about">' + user.about + '</p>\t\n\t\t\t\t\t\t</div>\t\n\t\t\t\t\t </div>';
 
 				return userInfo;
 			};

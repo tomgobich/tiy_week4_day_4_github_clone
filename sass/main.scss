@@ -85,6 +85,7 @@ img {
 
 .container {
 	max-width: 1004px;
+	min-width: 355px;
 }
 
 .main-body {
@@ -103,6 +104,10 @@ header {
 	border-bottom: 1px solid $color-border;
 
 	.header-left {
+
+		.menu-icon {
+			display: none;
+		}
 
 		.logo {
 			height: 28px;
@@ -337,7 +342,7 @@ header {
 		border-bottom: 1px solid $color-border;
 
 		form {
-			width: 40%;
+			width: 35%;
 			@include displayInlineBlock();
 
 			.search-input {
@@ -361,6 +366,10 @@ header {
 
 		.search-right {
 			float: right;
+
+			.filter {
+				display: none;
+			}
 
 			.search-filter {
 				list-style: none;
@@ -410,6 +419,10 @@ header {
 			float: left;
 
 			.repository-name {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				font-weight: 600;
 				font-size: 1.4em;
 				margin: 0 0 5px 0;
@@ -429,6 +442,10 @@ header {
 			}
 
 			.repository-about {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 				font-size: 1.2em;
 				padding: 0;
 			}

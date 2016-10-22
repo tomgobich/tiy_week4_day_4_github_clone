@@ -29,7 +29,8 @@ img {
   max-width: 100%; }
 
 .container {
-  max-width: 1004px; }
+  max-width: 1004px;
+  min-width: 355px; }
 
 .main-body {
   padding-top: 30px; }
@@ -39,6 +40,8 @@ header {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #DDD; }
+  header .header-left .menu-icon {
+    display: none; }
   header .header-left .logo {
     height: 28px;
     display: inline-block;
@@ -197,7 +200,7 @@ header {
   padding: 10px 0;
   border-bottom: 1px solid #DDD; }
   #repositoryListing .repository-search form {
-    width: 40%;
+    width: 35%;
     display: inline-block;
     vertical-align: top; }
     #repositoryListing .repository-search form .search-input {
@@ -220,6 +223,8 @@ header {
       border-radius: 3px; }
   #repositoryListing .repository-search .search-right {
     float: right; }
+    #repositoryListing .repository-search .search-right .filter {
+      display: none; }
     #repositoryListing .repository-search .search-right .search-filter {
       list-style: none;
       padding-right: 10px;
@@ -253,6 +258,10 @@ header {
     padding-right: 20px;
     float: left; }
     #repositoryListing .repository .repository-left .repository-name {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       font-weight: 600;
       font-size: 1.4em;
       margin: 0 0 5px 0; }
@@ -266,6 +275,10 @@ header {
         display: inline-block;
         vertical-align: top; }
     #repositoryListing .repository .repository-left .repository-about {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       font-size: 1.2em;
       padding: 0; }
     #repositoryListing .repository .repository-left .repository-update {
@@ -341,3 +354,39 @@ header {
         -webkit-border-radiu: 3px;
         -moz-border-radius: 3px;
         border-radius: 3px; }
+
+@media screen and (max-width: 993px) {
+  header .header-left .menu-icon {
+    display: inline-block; }
+  header .header-left .search-github,
+  header .header-left .nav-left {
+    display: none; }
+  .profile-info {
+    padding-bottom: 40px; }
+    .profile-info .avatar {
+      width: 30%;
+      padding: 0 20px 20px 0;
+      float: left; } }
+
+@media screen and (max-width: 675px) {
+  #repositoryListing .repository-search form {
+    width: 85%; }
+  #repositoryListing .repository-search .search-right .filter {
+    display: inline-block;
+    padding: 7px 0; }
+  #repositoryListing .repository-search .search-right .search-filter,
+  #repositoryListing .repository-search .search-right .new-repository {
+    display: none; } }
+
+@media screen and (max-width: 550px) {
+  .profile-info .avatar {
+    float: none;
+    padding: 0; } }
+
+@media screen and (max-width: 465px) {
+  header .header-right .nav-right ul li #navUsername {
+    display: none; }
+  #repositoryListing .repository .repository-left {
+    width: 100%; }
+  #repositoryListing .repository .repository-right {
+    display: none; } }

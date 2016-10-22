@@ -100,9 +100,11 @@ $(document).ready(function() {
 				let userInfo =
 					`<div id="userInfo" class="profile-section">
 						<img id="avatar" class="avatar" src="${user.avatar}" alt="${user.name}">
-						<h2 id="name" class="name">${user.name}</h2>
-						<p id="username" class="username">${user.username}</p>
-						<p id="about" class="about">${user.about}</p>		
+						<div class="user-info">
+							<h2 id="name" class="name">${user.name}</h2>
+							<p id="username" class="username">${user.username}</p>
+							<p id="about" class="about">${user.about}</p>	
+						</div>	
 					 </div>`;
 
 				return userInfo;
