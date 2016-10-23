@@ -53,7 +53,6 @@ gulp.task('babel', () => {
 
 gulp.task('watch', ['browserSync', 'sass'], () => {
   gulp.watch('sass/**/*.scss', ['sass']);
-  // reloads the browser whenever HTML or JS files change
   gulp.watch('js/**/*.js', ['babel']);
   gulp.watch('css/**/*.css', ['autoprefixer']);
   gulp.watch('*.html', browserSync.reload);
