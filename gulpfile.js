@@ -54,8 +54,8 @@ gulp.task('babel', () => {
 gulp.task('watch', ['browserSync', 'sass'], () => {
   gulp.watch('sass/**/*.scss', ['sass']);
   // reloads the browser whenever HTML or JS files change
-  gulp.watch('css/**/*.css', ['autoprefixer']);
   gulp.watch('js/**/*.js', ['babel']);
+  gulp.watch('css/**/*.css', ['autoprefixer']);
   gulp.watch('*.html', browserSync.reload);
   gulp.watch('dist/css/**/*.css', browserSync.reload);
   gulp.watch('dist/js/**/*.js', browserSync.reload);
@@ -66,7 +66,7 @@ gulp.task('watch', ['browserSync', 'sass'], () => {
 // --------------------------------------------------
 
 gulp.task('default', (callback) => {
-  runSequence(['sass', 'autoprefixer', 'babel', 'browserSync', 'watch'],
+  runSequence(['sass', 'babel', 'autoprefixer', 'browserSync', 'watch'],
     callback
   )
 });
