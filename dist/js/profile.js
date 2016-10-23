@@ -11,6 +11,7 @@ $(document).ready(function () {
 
 		// Make API call to get user data from GitHub
 		var getUserProfile = function getUserProfile() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich',
 				success: function success(resp) {
@@ -21,6 +22,7 @@ $(document).ready(function () {
 
 		// Load data from API call into user object
 		var setupUserData = function setupUserData(data) {
+
 			user.id = data.id;
 			user.avatar = data.avatar_url;
 			user.name = data.name;
@@ -38,6 +40,7 @@ $(document).ready(function () {
 
 		// Get user starred number & load it into object
 		var getUserStarData = function getUserStarData() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich/starred',
 				success: function success(resp) {
@@ -47,7 +50,9 @@ $(document).ready(function () {
 			});
 		};
 
+		// Get orginization data for user from API
 		var getUserOrganizations = function getUserOrganizations() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich/orgs',
 				success: function success(resp) {
@@ -56,8 +61,11 @@ $(document).ready(function () {
 			});
 		};
 
+		// Put organization API data into object, then an array
 		var setupOrganizations = function setupOrganizations(data) {
+
 			data.forEach(function (organizationData) {
+
 				var organization = new Organization();
 
 				organization.id = organizationData.id;
@@ -68,11 +76,13 @@ $(document).ready(function () {
 				organizations.push(organization);
 			});
 
+			// Display the organization data
 			displayUserData();
 		};
 
 		// Append user data to DOM
 		var displayUserData = function displayUserData() {
+
 			var $profileRow = $('#profileRow'),
 			    $profileInfo = $('#profileInfo'),
 			    $navAvatar = $('#navAvatar'),
@@ -101,6 +111,7 @@ $(document).ready(function () {
 
 			// #userInfo section
 			var buildUserInfo = function buildUserInfo() {
+
 				var userInfo = '<div id="userInfo" class="profile-section">\n\t\t\t\t\t\t<img id="avatar" class="avatar" src="' + user.avatar + '" alt="' + user.name + '">\n\t\t\t\t\t\t<div class="user-info">\n\t\t\t\t\t\t\t<h2 id="name" class="name">' + user.name + '</h2>\n\t\t\t\t\t\t\t<p id="username" class="username">' + user.username + '</p>\n\t\t\t\t\t\t\t<p id="about" class="about">' + user.about + '</p>\t\n\t\t\t\t\t\t</div>\t\n\t\t\t\t\t </div>';
 
 				return userInfo;
@@ -108,13 +119,15 @@ $(document).ready(function () {
 
 			// #userLinks section
 			var buildUserLinks = function buildUserLinks() {
-				var userLinks = '<div id="userLinks" class="profile-section">\n\t\t\t\t\t\t<ul class="profile-links">\n\t\t\t\t\t\t\t<li><img class="icon location" src="images/octicons/svg/location.svg">' + user.location + '</li>\n\t\t\t\t\t\t\t<li><img class="icon email" src="images/octicons/svg/mail.svg"><a href="#">' + user.email + '</a></li>\n\t\t\t\t\t\t\t<li><img class="icon clock" src="images/octicons/svg/clock.svg">Joined on ' + moment(user.creation).format('ll') + '</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t </div>';
+
+				var userLinks = '<div id="userLinks" class="profile-section">\n\t\t\t\t\t\t<ul class="profile-links">\n\t\t\t\t\t\t\t<li><span class="octicon octicon-location"></span> ' + user.location + '</li>\n\t\t\t\t\t\t\t<li><span class="octicon octicon-mail"></span> <a href="#">' + user.email + '</a></li>\n\t\t\t\t\t\t\t<li><span class="octicon octicon-clock"></span> Joined on ' + moment(user.creation).format('ll') + '</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t </div>';
 
 				return userLinks;
 			};
 
 			// #userStats section
 			var buildUserStats = function buildUserStats() {
+
 				var userStats = '<div id="userStats" class="profile-section">\n\t\t\t\t\t\t<div class="activity-count">\n\t\t\t\t\t\t\t<h3 class="count"><a href="https://github.com/' + user.username + '/followers">' + user.followers + '</a></h3>\n\t\t\t\t\t\t\t<p class="title">Followers</p>\n\t\t\t\t\t\t </div>\n\t\t\t\t\t\t <div class="activity-count">\n\t\t\t\t\t\t\t<h3 class="count"><a href="https://github.com/' + user.username + '?tab=stars">' + user.starred + '</a></h3>\n\t\t\t\t\t\t\t<p class="title">Starred</p>\n\t\t\t\t\t\t </div>\n\t\t\t\t\t\t <div class="activity-count">\n\t\t\t\t\t\t\t<h3 class="count"><a href="https://github.com/' + user.username + '/following">' + user.following + '</a></h3>\n\t\t\t\t\t\t\t<p class="title">Following</p>\n\t\t\t\t\t\t </div>\t\n\t\t\t\t\t </div>';
 
 				return userStats;
@@ -122,6 +135,7 @@ $(document).ready(function () {
 
 			// #userOrganization section
 			var buildUserOrganizations = function buildUserOrganizations() {
+
 				var userOrganizations = '<div id="userOrganizations" class="profile-section">\n\t\t\t\t\t\t<h3 class="organization-title">Organizations</h3>';
 
 				organizations.forEach(function (organization) {
@@ -133,17 +147,21 @@ $(document).ready(function () {
 
 			// Make visible to parent the following:
 			return {
+
 				userInfo: buildUserInfo,
 				userLinks: buildUserLinks,
 				userStats: buildUserStats,
 				userOrganizations: buildUserOrganizations
+
 			};
 		}();
 
 		// Make visible to global the following:
 		return {
+
 			buildProfile: getUserProfile,
 			userData: user
+
 		};
 	}();
 

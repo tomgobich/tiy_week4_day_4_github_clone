@@ -8,16 +8,19 @@ $(document).ready(function() {
 
 		// Make AJAX call for GitHub Repositories
 		var getRepositories = function() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich/repos',
 				success: function(resp) {
 					setupRepositoryData(resp);
 				}
 			});
+
 		}
 
 		// Put the data into an object, and push object to array
 		var setupRepositoryData = function(data) {
+
 			data.forEach(function(repo, index) {
 				let repository = new Repository();
 
@@ -30,6 +33,7 @@ $(document).ready(function() {
 				repository.starCount 	= repo.stargazers_count;
 
 				repositoryList.push(repository);
+
 			});
 
 			// Get branch count for each repository, separate API call
@@ -39,7 +43,9 @@ $(document).ready(function() {
 
 		// Make GitHub Repository Branch call
 		var getRepositoryBranchCount = function() {
+
 			repositoryList.forEach(function(repository) {
+
 				$.ajax({
 					url: `https://api.github.com/repos/tomgobich/${repository.name}/branches`,
 					success: function(resp) {
@@ -50,11 +56,14 @@ $(document).ready(function() {
 						displayRepositoryData(repository);
 					}
 				});
+
 			});
+
 		}
 
 		// Display the repository data (called within loop)
 		var displayRepositoryData = function(repository) {
+
 			let repositoryElement =
 				`<div class="repository">
 					<div class="repository-left">
@@ -76,6 +85,7 @@ $(document).ready(function() {
 				 </div>`;
 
 			$('#repositoryListing').append(repositoryElement);
+
 		}
 
 		return {
@@ -92,17 +102,21 @@ $(document).ready(function() {
 
 		// Make AJAX call for GitHub Repositories
 		var getActivities = function() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich/events',
 				success: function(resp) {
 					setupActivityData(resp);
 				}
 			});
+
 		}
 
 		// Put the data into an object, and push object to array
 		var setupActivityData = function(data) {
+
 			data.forEach(function(activityData, index) {
+
 				let activity = new Activity();
 
 				activity.id 				= activityData.id;
@@ -117,52 +131,89 @@ $(document).ready(function() {
 				activity.repositoryUrl		= _.replace(activityData.repo.url, 'api.', '');
 				activity.repositoryUrl		= _.replace(activity.repositoryUrl, 'repos/', '');
 
+				// Event type PushEvent?
 				if(activityData.type === "PushEvent") {
+
+					// Yes, add the following data
 					activity.commitBranch	= _.replace(activityData.payload.ref, 'refs/heads/', '');
 					activity.commitSha		= activityData.payload.commits[0].sha;
 					activity.commitSha 		= activity.commitSha.substring(0, 7);
 					activity.commitMessage	= activityData.payload.commits[0].message;
 					activity.commitUrl		= activity.repositoryUrl + '/commits/' + activityData.payload.head;
+
 				}
+				// Event type CreateEvent?
 				else if(activityData.type === "CreateEvent") {
+
+					// Yes, add the following data
 					activity.createType 	= activityData.payload.ref_type;
 					activity.description 	= activityData.payload.description;
 
+					// Create type branch?
 					if( activity.createType === "branch") {
+
+						// Yes, add the following data
 						activity.branch 	= activityData.payload.ref;
+
 					}
+
 				}
 
+				// Push to array
 				activityList.push(activity);
+
 			});
 
+			// Display the data
 			displayActivityData();
+
 		}
 
+		// Handle displaying the activity data
 		var displayActivityData = function() {
+
 			let activityElement = '';
 
+			// Loop through activities
 			activityList.forEach(function(activity, index) {
+
+				// PushEvent?
 				if(activity.type === "PushEvent") {
+
+					// Yes, display a push event block
 					activityElement += buildPushEvent(activity);
+
 				}
+				// Create Event?
 				else if(activity.type === "CreateEvent") {
 
+					// Yes, but is it a repository?
 					if(activity.createType === "repository") {
-						activityElement += buildCreateRepositoryEvent(activity);	
+
+						// Yes, display a repository block
+						activityElement += buildCreateRepositoryEvent(activity);
+
 					}
+					// Yes, but is it a branch?
 					else if(activity.createType === "branch") {
+
+						// Yes, display a branch block
 						activityElement += buildCreateBranchEvent(activity);
+
 					}
 					
 				}
-			})
 
+			});
+
+			// Append to activityListing
 			$('#activityListing').append(activityElement);
+
 		}
 
 		// Display the repository data (called within loop)
 		var buildPushEvent = function(activity) {
+
 			let pushElement =
 				`<div class="activity">
 					<div class="activity-icon">
@@ -184,10 +235,12 @@ $(document).ready(function() {
 				 </div>`;
 
 			return pushElement;
+
 		}
 
 		// Display the repository data (called within loop)
 		var buildCreateRepositoryEvent = function(activity) {
+
 			let createElement =
 				`<div class="activity">
 					<div class="activity-icon">
@@ -207,10 +260,12 @@ $(document).ready(function() {
 				 </div>`;
 
 			return createElement;
+
 		}
 
 		// Display the repository data (called within loop)
 		var buildCreateBranchEvent = function(activity) {
+
 			let createElement =
 				`<div class="activity">
 					<div class="activity-icon">
@@ -231,14 +286,20 @@ $(document).ready(function() {
 				 </div>`;
 
 			return createElement;
+
 		}
 
 		return {
+
 			buildActivityList: getActivities
+
 		}
 
 	})();
 
+
+
+	// Initialize data calls
 	Repositories.buildRepositoryList();
 	Activity.buildActivityList();
 

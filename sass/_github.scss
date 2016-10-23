@@ -1,0 +1,267 @@
+// --------------------------------------------------
+// Section Tab Styles
+// --------------------------------------------------
+.section-tabs {
+	list-style: none;
+	border-bottom: 1px solid $color-border;
+	padding: 0;
+
+	.octicons {
+		position: relative;
+		top: 7px;
+	}
+
+	li {
+		display: inline-block;
+		border-top: 1px solid $color-background;
+		border-right: 1px solid $color-background;
+		border-left: 1px solid $color-background;
+		padding: 6px 15px;
+		cursor: pointer;
+
+		h3 {
+			font-size: 1.2em;
+			vertical-align: top;
+			padding-left: 8px;
+			margin: 0;
+			@include displayInlineBlock();
+		}
+
+		.icon {
+			height: 18px;
+			margin-top: 6px;
+			@include displayInlineBlock();
+		}
+
+		&.active {
+			border-top: 1px solid $color-border;
+			border-right: 1px solid $color-border;
+			border-bottom: 1px solid $color-background;
+			border-left: 1px solid $color-border;
+			margin-bottom: -1px;						// Places border-bottom atop ul's border-bottom
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Repository Listing Styles
+// --------------------------------------------------
+#repositoryListing {
+
+	.repository-search {
+		padding: 10px 0;
+		border-bottom: 1px solid $color-border;
+
+		form {
+			width: 35%;
+			@include displayInlineBlock();
+
+			.search-input {
+				width: calc(100% - 77px);
+				padding: 5px;
+				border: 1px solid $color-border;
+				margin-right: 5px;
+				float: left;
+				@include borderRadius($border-radius-small);
+			}
+
+			.search-button {
+				color: black;
+				background-color: $color-alt-background;
+				padding: 5px 10px;
+				border: 1px solid $color-border;
+				float: left;
+				@include borderRadius($border-radius-small);
+			}
+		}
+
+		.search-right {
+			float: right;
+
+			.filter {
+				display: none;
+			}
+
+			.search-filter {
+				list-style: none;
+				padding-right: 10px;
+				@include displayInlineBlock();
+
+				li {
+					padding: 5px 4px;
+					display: inline-block;
+
+					a {
+
+						&.active {
+							color: black;
+							font-weight: 800;
+						}
+					}
+				}
+			}
+
+			.new-repository {
+				color: white;
+				font-weight: 800;
+				background-color: $color-success;
+				background-image: linear-gradient(to bottom, lighten($color-success, 10), darken($color-success, 10));
+				border: 1px solid darken($color-success, 20);
+				margin-top: -2px;
+			}
+		}
+	}
+
+	.repository {
+		padding: 20px 0;
+		border-bottom: 1px solid $color-border;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:after {
+			@include clearAfter();
+		}
+
+		.repository-left {
+			width: 70%;
+			padding-right: 20px;
+			float: left;
+
+			.repository-name {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-weight: 600;
+				font-size: 1.4em;
+				margin: 0 0 5px 0;
+			}
+
+			.repository-fork {
+				color: $color-text-light;
+
+				img {
+					padding: 2px 0 0 0;
+					@include displayInlineBlock();
+				}
+
+				p {
+					@include displayInlineBlock();
+				}
+			}
+
+			.repository-about {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				font-size: 1.2em;
+				padding: 0;
+			}
+
+			.repository-update {
+				color: $color-text-light;
+			}
+		}
+
+		.repository-right {
+			width: 30%;
+			text-align: right;
+			color: $color-text-light;
+			float: right;
+			padding-top: 4px;
+
+			a {
+				color: $color-text-light;
+
+				&:hover {
+					color: $color-link;
+					text-decoration: none;
+				}
+			}
+
+			.repository-type,
+			.repository-stars,
+			.repository-branches {
+				font-size: 1em;
+				font-weight: 600;
+				padding: 0 6px 0 0;
+				margin: -2px 0 0 0;
+				@include displayInlineBlock();
+			}
+		}
+	}
+}
+
+
+
+// --------------------------------------------------
+// Activity Listing Styles
+// --------------------------------------------------
+#activityListing {
+	display: none;
+
+	.activity {
+		padding: 20px 0;
+		border-bottom: 1px solid $color-border;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		.activity-icon {
+			width: 50px;
+			height: 100%;
+			color: $color-text-light;
+			padding-right: 10px;
+			@include displayInlineBlock();
+		}
+
+		.activity-body {
+			width: 80%;
+			@include displayInlineBlock();
+
+			.time-since {
+				color: $color-text-light;
+				margin: 0;
+			}
+
+			.activity-title {
+				width: 100%;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				margin: 0 0 3px 0;
+			}
+
+			.activity-description {
+
+				p {
+					width: calc(100% - 65px);
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					@include displayInlineBlock();
+				}
+
+				.user-repo {
+					width: 35px;
+					margin-top: 1px;
+					@include displayInlineBlock();
+					@include borderRadius($border-radius-small);
+				}
+
+				.last-user {
+					width: 20px;
+					margin-top: 1px;
+					@include displayInlineBlock();
+					@include borderRadius($border-radius-small);
+				}
+			}
+		}
+	}
+}

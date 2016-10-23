@@ -9,16 +9,19 @@ $(document).ready(function() {
 
 		// Make API call to get user data from GitHub
 		var getUserProfile = function() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich',
 				success: function(resp) {
 					setupUserData(resp);
 				}
 			});
+
 		}
 
 		// Load data from API call into user object
 		var setupUserData = function(data) {
+
 			user.id			= data.id;
 			user.avatar 	= data.avatar_url;
 			user.name		= data.name;
@@ -32,30 +35,39 @@ $(document).ready(function() {
 
 			// Get user starred number & load it into object
 			getUserStarData();
+
 		}
 
 		// Get user starred number & load it into object
 		var getUserStarData = function() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich/starred',
 				success: function(resp) {
 					user.starred = resp.length;
 					getUserOrganizations();
 				}
-			})
+			});
+
 		}
 
+		// Get orginization data for user from API
 		var getUserOrganizations = function() {
+
 			$.ajax({
 				url: 'https://api.github.com/users/tomgobich/orgs',
 				success: function(resp) {
 					setupOrganizations(resp);
 				}
-			})
+			});
+
 		}
 
+		// Put organization API data into object, then an array
 		var setupOrganizations = function(data) {
+
 			data.forEach(function(organizationData) {
+
 				let organization 	= new Organization();
 
 				organization.id		= organizationData.id;
@@ -64,13 +76,17 @@ $(document).ready(function() {
 				organization.avatar = organizationData.avatar_url;
 
 				organizations.push(organization);
+
 			});
 
+			// Display the organization data
 			displayUserData();
+
 		}
 
 		// Append user data to DOM
 		var displayUserData = function() {
+
 			let $profileRow 	= $('#profileRow'),
 				$profileInfo	= $('#profileInfo'),
 				$navAvatar		= $('#navAvatar'),
@@ -90,6 +106,7 @@ $(document).ready(function() {
 
 			// Attach #profileInfo back on DOM
 			$profileRow.prepend($profileInfo);
+
 		}
 
 		// Build profile HTML elements
@@ -97,6 +114,7 @@ $(document).ready(function() {
 
 			// #userInfo section
 			var buildUserInfo = function() {
+
 				let userInfo =
 					`<div id="userInfo" class="profile-section">
 						<img id="avatar" class="avatar" src="${user.avatar}" alt="${user.name}">
@@ -108,24 +126,28 @@ $(document).ready(function() {
 					 </div>`;
 
 				return userInfo;
+
 			}
 
 			// #userLinks section
 			var buildUserLinks = function() {
+
 				let userLinks =
 					`<div id="userLinks" class="profile-section">
 						<ul class="profile-links">
-							<li><img class="icon location" src="images/octicons/svg/location.svg">${user.location}</li>
-							<li><img class="icon email" src="images/octicons/svg/mail.svg"><a href="#">${user.email}</a></li>
-							<li><img class="icon clock" src="images/octicons/svg/clock.svg">Joined on ${moment(user.creation).format('ll')}</li>
+							<li><span class="octicon octicon-location"></span> ${user.location}</li>
+							<li><span class="octicon octicon-mail"></span> <a href="#">${user.email}</a></li>
+							<li><span class="octicon octicon-clock"></span> Joined on ${moment(user.creation).format('ll')}</li>
 						</ul>
 					 </div>`;
 
 				return userLinks;
+
 			}
 
 			// #userStats section
 			var buildUserStats = function() {
+
 				let userStats = 
 					`<div id="userStats" class="profile-section">
 						<div class="activity-count">
@@ -143,10 +165,12 @@ $(document).ready(function() {
 					 </div>`;
 
 				return userStats;
+
 			}
 
 			// #userOrganization section
 			var buildUserOrganizations = function() {
+
 				let userOrganizations =
 					`<div id="userOrganizations" class="profile-section">
 						<h3 class="organization-title">Organizations</h3>`;
@@ -159,22 +183,27 @@ $(document).ready(function() {
 				});
 
 				return userOrganizations;
+
 			}
 
 			// Make visible to parent the following:
 			return {
+
 				userInfo: buildUserInfo,
 				userLinks: buildUserLinks,
 				userStats: buildUserStats,
 				userOrganizations: buildUserOrganizations
+
 			}
 
 		})();
 
 		// Make visible to global the following:
 		return {
+
 			buildProfile: getUserProfile,
 			userData: user
+
 		}
 
 	})();
